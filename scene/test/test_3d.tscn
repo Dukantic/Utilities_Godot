@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvmewx1dl8q2p"]
+
+[ext_resource type="PackedScene" uid="uid://dwq50m2cd1ag" path="res://scene/fires/fire.tscn" id="1_w4tpb"]
+
+[node name="test_3d" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.87221)
+
+[node name="GPUParticles3D" parent="." instance=ExtResource("1_w4tpb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0140603, -0.465107, -2.16313)

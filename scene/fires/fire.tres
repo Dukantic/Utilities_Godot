@@ -1,0 +1,73 @@
+[gd_resource type="VisualShader" load_steps=5 format=3 uid="uid://dn78vqbwfpepx"]
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_d7dmc"]
+constant = 0.1
+
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_kd0xs"]
+expanded_output_ports = [0]
+constant = Color(0.808028, 0.114947, 0.0656781, 1)
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_oni0f"]
+input_name = "projection_matrix"
+
+[sub_resource type="VisualShaderNodeBillboard" id="VisualShaderNodeBillboard_y34iq"]
+keep_scale = true
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+
+
+
+void vertex() {
+	mat4 n_out9p0;
+// GetBillboardMatrix:9
+	{
+		mat4 __mvm = VIEW_MATRIX * mat4(INV_VIEW_MATRIX[0], INV_VIEW_MATRIX[1], INV_VIEW_MATRIX[2], MODEL_MATRIX[3]);
+		__mvm = __mvm * mat4(vec4(length(MODEL_MATRIX[0].xyz), 0.0, 0.0, 0.0), vec4(0.0, length(MODEL_MATRIX[1].xyz), 0.0, 0.0), vec4(0.0, 0.0, length(MODEL_MATRIX[2].xyz), 0.0), vec4(0.0, 0.0, 0.0, 1.0));
+		n_out9p0 = __mvm;
+	}
+
+
+// Input:10
+	mat4 n_out10p0 = PROJECTION_MATRIX;
+
+
+// Output:0
+	MODELVIEW_MATRIX = n_out9p0;
+	PROJECTION_MATRIX = n_out10p0;
+
+
+}
+
+void fragment() {
+// ColorConstant:6
+	vec4 n_out6p0 = vec4(0.808028, 0.114947, 0.065678, 1.000000);
+
+
+// FloatConstant:14
+	float n_out14p0 = 0.100000;
+
+
+// Output:0
+	ALBEDO = vec3(n_out6p0.xyz);
+	ALPHA = n_out14p0;
+	EMISSION = vec3(n_out6p0.xyz);
+
+
+}
+"
+graph_offset = Vector2(-362.367, -322.055)
+nodes/vertex/9/node = SubResource("VisualShaderNodeBillboard_y34iq")
+nodes/vertex/9/position = Vector2(-220, 320)
+nodes/vertex/10/node = SubResource("VisualShaderNodeInput_oni0f")
+nodes/vertex/10/position = Vector2(-380, 500)
+nodes/vertex/connections = PackedInt32Array(9, 0, 0, 10, 10, 0, 0, 11)
+nodes/fragment/0/position = Vector2(340, 60)
+nodes/fragment/6/node = SubResource("VisualShaderNodeColorConstant_kd0xs")
+nodes/fragment/6/position = Vector2(-420, -80)
+nodes/fragment/14/node = SubResource("VisualShaderNodeFloatConstant_d7dmc")
+nodes/fragment/14/position = Vector2(-180, 180)
+nodes/fragment/connections = PackedInt32Array(6, 0, 0, 5, 14, 0, 0, 1, 6, 0, 0, 0)
+nodes/light/0/position = Vector2(420, 180)
