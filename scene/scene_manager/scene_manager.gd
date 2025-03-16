@@ -1,6 +1,6 @@
 extends Node
 
-var first_scene :PackedScene = load("res://scene/test/test_3d.tscn")
+var first_scene :PackedScene = load("res://scene/black-hole/global_black_hole.tscn")
 
 signal change_scene_signal(new_scene: PackedScene)
 

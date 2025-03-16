@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnoxuqk2qm6ll"]
+
+[ext_resource type="Script" uid="uid://b3arxpbud0ujf" path="res://scene/black-hole/planet_spawner.gd" id="1_n275n"]
+
+[node name="planet_spawner" type="Node3D"]
+script = ExtResource("1_n275n")

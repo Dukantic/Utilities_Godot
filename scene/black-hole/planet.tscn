@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://3tum5bv3wu1e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d32w3"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_rkx2n"]
+radius = 0.05
+height = 0.1
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d32w3"]
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rkx2n"]
+disable_receive_shadows = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_p072d"]
+material = SubResource("StandardMaterial3D_rkx2n")
+radius = 0.05
+height = 0.1
+
+[node name="MeshInstance3D" type="MeshInstance3D"]
+material_override = SubResource("StandardMaterial3D_d32w3")
+mesh = SubResource("SphereMesh_rkx2n")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+visible = false
+amount = 1000
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_d32w3")
+draw_pass_1 = SubResource("SphereMesh_p072d")

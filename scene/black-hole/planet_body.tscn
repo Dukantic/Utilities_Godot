@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://bs7ta4vkl1fe2"]
+
+[ext_resource type="PackedScene" uid="uid://3tum5bv3wu1e" path="res://scene/black-hole/planet.tscn" id="1_5uvf1"]
+[ext_resource type="Script" uid="uid://de4l50ll5ujyo" path="res://scene/black-hole/planet_body.gd" id="1_rlenf"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rlenf"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_geki1"]
+radius = 0.05
+
+[node name="planet_body" type="RigidBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_rlenf")
+constant_force = Vector3(0, 0, 1)
+script = ExtResource("1_rlenf")
+
+[node name="MeshInstance3D" parent="." instance=ExtResource("1_5uvf1")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_geki1")

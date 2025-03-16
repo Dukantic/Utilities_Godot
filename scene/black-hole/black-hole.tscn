@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://l5cithv1qb2k"]
+
+[ext_resource type="Shader" uid="uid://dorp0rphi3tma" path="res://scene/black-hole/black-hole.gdshader" id="1_w54wl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_64iq6"]
+render_priority = 0
+shader = ExtResource("1_w54wl")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/size = 1.05
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nev3u"]
+next_pass = SubResource("ShaderMaterial_64iq6")
+albedo_color = Color(0, 0, 0, 1)
+metallic_specular = 0.0
+disable_receive_shadows = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_d1525"]
+
+[node name="MeshInstance3D" type="MeshInstance3D"]
+material_override = SubResource("StandardMaterial3D_nev3u")
+mesh = SubResource("SphereMesh_d1525")
